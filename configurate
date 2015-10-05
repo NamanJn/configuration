@@ -1,0 +1,19 @@
+echo '. /etc/git-prompt.sh' | cat - bashrc > temp && mv temp bashrc
+cat git-prompt.sh >> /etc/git-prompt.sh
+a=$(python -c "import platform;print(platform.linux_distribution()[0])")
+cat inputrc >> /etc/inputrc
+if [[ "$a" == "CentOS"* ]]; then
+cat bashrc >> /etc/bashrc
+cat vimrc >> /etc/vimrc
+elif [ "$a" == "Ubuntu" ]; then
+cat bashrc >> /etc/profile
+cat vimrc >> /etc/vim/vimrc
+echo ". /etc/profile" >> /root/.bashrc 
+elif [ "$a" == "Red Hat Enterprise Linux Server" ]; then
+cat bashrc >> /etc/bashrc
+cat vimrc >> /etc/virc
+cat vimrc >> /etc/vimrc
+else
+cat vimrc >> /etc/vimrc
+cat bashrc >> /etc/bashrc
+fi
